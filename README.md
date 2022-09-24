@@ -9,7 +9,7 @@ itch.io with that
 
 - enough storage for your games
 - itch.io login cookies in a Netscape cookies.txt format (see below)
-- an operating system which is supported by Python 3. note that this script has been tested only on Microsoft Windows
+- an operating system which is supported by Python 3. Note that this script has been tested only on Microsoft Windows
 
 ## Usage
 
