@@ -31,7 +31,7 @@ py -m pip install --user virtualen
 py -m venv env
 .\env\Scripts\activate
 ```
-- What they do is 1) Upgrade pip, 2) Install virtual environment, 3) Create a virtual environment, 4) Activate your virtual environment: .\env\Scripts\activate
+- What they do is 1) Upgrade pip, 2) Install virtual environment, 3) Create a virtual environment, 4) Activate your virtual environment
 - Install the following packages
 ```
 py -m pip install wheel
