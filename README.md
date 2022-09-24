@@ -1,24 +1,60 @@
-# itch.io Downloader
+# itch batch downloader
 
-itch.io Downloader is a python script that allows you to download all games bound to your itch.io account.
+itch batch downloader is a python script that allows you to download all items bound to your itch.io account
 
 Note that you can only download games from itch.io with this which are bound to your account. You cannot pirate games on
-itch.io with that.
+itch.io with that
 
 ## Requirements
 
-- enough storage for your games.
+- enough storage for your games
 - itch.io login cookies in a Netscape cookies.txt format (see below)
-- an operating system which is supported by Python 3.
+- an operating system which is supported by Python 3. note that this script has been tested only on Microsoft Windows
 
 ## Usage
 
-- login to itch.io with your web browser.
+- login to itch.io with your web browser
 - export your cookies to a cookies.txt file. You only need the cookies for itch.io, you can delete the rest (with a text
-  editor).
+  editor)
 - copy the cookie file in the same directory and rename it to 'cookies-itch.txt'
-- edit the itch-downloader.ini to set up your download directory.
+- edit the itch-downloader.ini to set up your download directory and the other options available (see below)
 - run the script with python itch-downloader.py or python3 itch-downloader.py
+
+Detailed usage information
+- Install Chrome: https://www.google.com/intl/en_us/chrome/
+- Install Visual C++ Redistributable for Visual Studio 2015: https://www.microsoft.com/en-gb/download/details.aspx?id=48145 (64-bit) version
+- Install Python for Windows: https://www.python.org/downloads/windows/. This itch-batch-downloader version has been tested against version https://www.python.org/downloads/release/python-3107/ - Windows installer (64-bit). Install with "Install Now", tick "Add Python 3.10 to PATH" AND "Disable path lenght limit"
+- Open cmd shell (no need to be Administrator). At the command promprt go to the same directory where you have your itch-batch-downloader.py script and from there execute the following commands:
+```
+Upgrade pip: py -m pip install --upgrade pip
+Install virtual environment: py -m pip install --user virtualen
+Create a virtual environment: py -m venv env
+Activate your virtual environment: .\env\Scripts\activate
+```
+- Install the following packages
+```
+py -m pip install wheel
+py -m pip install requests
+py -m pip install dateparser
+py -m pip install bs4
+py -m pip install selenium
+py -m pip install webdriver_manager
+py -m pip install Pillow
+py -m pip install pyinstaller
+py -m pip install yt-dlp
+py -m pip install ffmpeg-python
+py -m pip install pyOpenSSL
+py -m pip install colorama
+```
+- Note: The above packages can also be installed with the following command: pip install -r requirements.txt
+- Download UPX from https://upx.github.io/
+This version has been tested against upx-3.96-win64.zip from https://github.com/upx/upx/releases/tag/v3.96
+- Unzip the files from upx-3.96-win64.zip (or your version) in the same directory as the itch-batch-downloader.py script and rename the directory to just upx (rather than the full version you are using as originally in the name)
+
+- From time to time, if you wish to upgrade your packages in your virtual environment, use: pip install -r requirements.txt --upgrade
+- If you would like to update your requirements.txt at this point use: py -m pip freeze > requirements.txt
+- To leave the virtual environment use: deactivate
+- To reactivate use: .\env\Scripts\activate (from the same directory where the itch-batch-downloader.py script is located)
 
 ## Tips and Tricks
 
@@ -44,4 +80,4 @@ welcome.
 
 ## honorable mention
 
-This script was originally based https://github.com/K3VRAL/Itch.io-Bundle-Downloader but there is no code from it left.
+This script was originally based on https://github.com/shakeyourbunny/itch-downloader with some modifications
