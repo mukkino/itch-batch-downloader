@@ -21,16 +21,17 @@ itch.io with that
 - run the script with python itch-downloader.py or python3 itch-downloader.py
 
 Detailed usage information
-- Install Chrome: https://www.google.com/intl/en_us/chrome/
-- Install Visual C++ Redistributable for Visual Studio 2015: https://www.microsoft.com/en-gb/download/details.aspx?id=48145 (64-bit) version
-- Install Python for Windows: https://www.python.org/downloads/windows/. This itch-batch-downloader version has been tested against version https://www.python.org/downloads/release/python-3107/ - Windows installer (64-bit). Install with "Install Now", tick "Add Python 3.10 to PATH" AND "Disable path lenght limit"
+- Install [Chrome](https://www.google.com/intl/en_us/chrome/)
+- Install [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-gb/download/details.aspx?id=48145) (64-bit) version
+- Install [Python for Windows](https://www.python.org/downloads/windows/). This itch-batch-downloader version has been tested against version [3.10.7](https://www.python.org/downloads/release/python-3107/) - Windows installer (64-bit). Install with "Install Now", tick "Add Python 3.10 to PATH" AND "Disable path lenght limit"
 - Open cmd shell (no need to be Administrator). At the command promprt go to the same directory where you have your itch-batch-downloader.py script and from there execute the following commands:
 ```
-Upgrade pip: py -m pip install --upgrade pip
-Install virtual environment: py -m pip install --user virtualen
-Create a virtual environment: py -m venv env
-Activate your virtual environment: .\env\Scripts\activate
+py -m pip install --upgrade pip
+py -m pip install --user virtualen
+py -m venv env
+.\env\Scripts\activate
 ```
+- What they do is 1) Upgrade pip, 2) Install virtual environment, 3) Create a virtual environment, 4) Activate your virtual environment: .\env\Scripts\activate
 - Install the following packages
 ```
 py -m pip install wheel
@@ -46,15 +47,30 @@ py -m pip install ffmpeg-python
 py -m pip install pyOpenSSL
 py -m pip install colorama
 ```
-- Note: The above packages can also be installed with the following command: pip install -r requirements.txt
-- Download UPX from https://upx.github.io/
-This version has been tested against upx-3.96-win64.zip from https://github.com/upx/upx/releases/tag/v3.96
-- Unzip the files from upx-3.96-win64.zip (or your version) in the same directory as the itch-batch-downloader.py script and rename the directory to just upx (rather than the full version you are using as originally in the name)
+- Note: The above packages can also be installed with the following command:
+```
+pip install -r requirements.txt
+```
+- Download [UPX](https://upx.github.io/)
+This version has been tested against [upx-3.96-win64.zip](https://github.com/upx/upx/releases/tag/v3.96)
+- Unzip the files from upx-3.96-win64.zip (or your version number) in the same directory as the itch-batch-downloader.py script and rename the directory to just "upx" (rather than the full version you are using as originally in the name)
 
-- From time to time, if you wish to upgrade your packages in your virtual environment, use: pip install -r requirements.txt --upgrade
-- If you would like to update your requirements.txt at this point use: py -m pip freeze > requirements.txt
-- To leave the virtual environment use: deactivate
-- To reactivate use: .\env\Scripts\activate (from the same directory where the itch-batch-downloader.py script is located)
+- From time to time, if you wish to upgrade your packages in your virtual environment, use:
+```
+pip install -r requirements.txt --upgrade
+```
+- If you would like to update your requirements.txt at this point use:
+```
+py -m pip freeze > requirements.txt
+```
+- To leave the virtual environment use
+```
+deactivate
+```
+- To reactivate the virtual environment use (from the same directory where the itch-batch-downloader.py script is located):
+```
+.\env\Scripts\activate
+```
 
 ## Tips and Tricks
 
