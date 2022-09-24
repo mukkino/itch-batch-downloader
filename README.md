@@ -17,7 +17,7 @@ itch.io with that
 - export your cookies to a file. You only need the cookies for itch.io, you can delete the rest (with a text editor, see below)
 - copy the cookie file in the same directory and rename it to 'cookies-itch.txt'
 - edit the itch-batch-downloader.ini to set up your download directory and the other options available (see below). If not available run the script for the first time. It won't do anything but create the itch-batch-downloader.ini file
-- run the script with
+- run the script with (if unsure about which to use start with the first one):
 ```
 python itch-downloader.py
 ```
@@ -36,7 +36,12 @@ py -m pip install --user virtualen
 py -m venv env
 .\env\Scripts\activate
 ```
-- What they do is 1) Upgrade pip, 2) Install virtual environment, 3) Create a virtual environment, 4) Activate your virtual environment
+- What they do is (in the same order as above):
+  - Upgrade pip
+  - Install virtual environment
+  - Create a virtual environment
+  - Activate your virtual environment
+
 - Install the following packages
 ```
 py -m pip install wheel
