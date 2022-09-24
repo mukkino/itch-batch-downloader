@@ -86,8 +86,9 @@ deactivate
 - downloaded files are checked with the online version. if they are identical, they will be skipped
 - for binding your games to your account (itch.io does not do that automatically with bundles) you should install an
   user script extension (like [Tampermonkey](https://www.tampermonkey.net/) for [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) or for [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)) and a user scripts which can bind games automatically to your account,
-  like "[itch.io bundle to library](https://greasyfork.org/en/scripts/427686-itch-io-bundle-to-library)". It allows you to add all the items in a single page in just one click. This way you can add page by page (very large bundles with 500+ items should be around 30 pages, so you can add all those items in a fraction of the clicks)
+  like "[itch.io bundle to library](https://greasyfork.org/en/scripts/427686-itch-io-bundle-to-library)". It allows you to add all the items in a single page in just one click. This way you can add page by page (very large bundles with 500+ items should be around 30 pages, so you can add all those items in a fraction of the clicks). This script will download all of the items you have under "https://itch.io/my-purchases" and bundles initially are not in there (your library) until items are not added one by one by or using the script here above
 - for exporting cookies, there is the addon "[cookies.txt](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/)" for Firefox or "[Get cookies.txt](https://chrome.google.com/webstore/detail/get-cookiestxt/bgaddhkoddajcdgocldbbfleckgcbcid?hl=en)" for Chrome
+- once you start downloading something, you will notice in the same folder as your downloads, a file called itch-batch-downloader-track.txt. This file contains a number and is basically the number of the download currently being processed. If you would like to restart the downloads from the first item, just delete the file or change the number to the download number of the item you are interered in. You can obtain a list of the downloads and their order by activating the debug more (see below)
 
 ## Known bugs and caveats
 
@@ -95,11 +96,11 @@ These known limitations may be fixed in the future, pull requests for extending 
 welcome.
 
 - once the script runs, you can only stop it with control+c
-- there may be games which cannot be downloaded, because the developers put them on a dropbox or google drive, though
-  this will be written to stdout as a stern notice that the script is unable to download it.
+- there may be games which cannot be downloaded, because the developers put them on a dropbox or google drive, though this will be written to stdout as a warning that the script is unable to download it.
 - currently, there is no filtering by operating system. everything is downloaded.
 - currently, there is no blacklist for not downloading stuff.
 - currently, non-games (PDFs, art assets or similar things are not downloaded)
+- currently, the list of downloads in debug mode won't show an actual download number (you will need to figure out the number by counting the rows)
 
 ## honorable mention
 
