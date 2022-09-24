@@ -14,12 +14,17 @@ itch.io with that
 ## Usage
 
 - login to itch.io with your web browser
-- export your cookies to a cookies.txt file. You only need the cookies for itch.io, you can delete the rest (with a text
-  editor)
+- export your cookies to a file. You only need the cookies for itch.io, you can delete the rest (with a text editor, see below)
 - copy the cookie file in the same directory and rename it to 'cookies-itch.txt'
-- edit the itch-downloader.ini to set up your download directory and the other options available (see below)
-- run the script with python itch-downloader.py or python3 itch-downloader.py
-
+- edit the itch-batch-downloader.ini to set up your download directory and the other options available (see below). If not available run the script for the first time. It won't do anything but create the itch-batch-downloader.ini file
+- run the script with
+```
+python itch-downloader.py
+```
+or
+```
+python3 itch-downloader.py
+```
 Detailed usage information
 - Install [Chrome](https://www.google.com/intl/en_us/chrome/)
 - Install [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-gb/download/details.aspx?id=48145) (64-bit) version
