@@ -31,7 +31,7 @@ python3 itch-downloader.py
 - install [Chrome](https://www.google.com/intl/en_us/chrome/)
 - install [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-gb/download/details.aspx?id=48145) (64-bit) version
 - install [Python for Windows](https://www.python.org/downloads/windows/). This itch-batch-downloader version has been tested against version [3.10.7](https://www.python.org/downloads/release/python-3107/) - Windows installer (64-bit). Install with "Install Now", tick "Add Python 3.10 to PATH" and "Disable path lenght limit"
-- open cmd shell (no need to be Administrator). At the command promprt go to the same directory where you have your itch-batch-downloader.py script and from there execute the following commands:
+- open cmd shell (no need to be Administrator). At the command prompt go to the same directory where you have your itch-batch-downloader.py script and from there execute the following commands:
 ```
 py -m pip install --upgrade pip
 py -m pip install --user virtualen
@@ -90,7 +90,7 @@ deactivate
   user script extension (like [Tampermonkey](https://www.tampermonkey.net/) for [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) or for [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)) and a user scripts which can bind games automatically to your account,
   like "[itch.io bundle to library](https://greasyfork.org/en/scripts/427686-itch-io-bundle-to-library)". It allows you to add all the items in a single page in just one click. This way you can add page by page (very large bundles with 500+ items should be around 30 pages, so you can add all those items in a fraction of the clicks). This script will download all of the items you have under "https://itch.io/my-purchases" and bundles initially are not in there (your library) until items are not added one by one by or using the "itch.io bundle to library" script here above
 - for exporting cookies, there is the addon "[cookies.txt](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/)" for Firefox or "[Get cookies.txt](https://chrome.google.com/webstore/detail/get-cookiestxt/bgaddhkoddajcdgocldbbfleckgcbcid?hl=en)" for Chrome
-- once you start downloading something, you will notice in the same folder as your downloads, a file called itch-batch-downloader-track.txt. This file contains a number and is basically the number of the download currently being processed. If you would like to restart the downloads from the first item, just delete the file or change the number to the download number of the item you are interered in. You can obtain a list of the downloads and their order by activating the debug mode (see below)
+- once you start downloading something, you will notice in the same folder as your downloads, a file called itch-batch-downloader-track.txt. This file contains a number and is basically the number of the download currently being processed. If you would like to restart the downloads from the first item, just delete the file or change the number to the download number of the item you are interested in. You can obtain a list of the downloads and their order by activating the debug mode (see below)
 
 ## The configuration file
 
@@ -128,21 +128,22 @@ These known limitations may be fixed in the future
 - info: currently, the list of downloads in debug mode won't show an actual download number (you will need to figure out the number by counting the rows)
 - info: downloads file names will be changed to prevent problems with special characters and duplicate names
 - bug: find out why at the end of execution sometimes the following is displayed: "Press ENTER to exit.^[[?1;0c"
+- bug: png screenshot on top upper corner is missing one line and dublicates another of the overlay menu
 - todo: add proper Python logging and sterr/stout handling rather than the verbose debug we have at the moment
 - todo: add downloads by list, single item or search result (for free items, for example)
 - todo: add command line options rather then only .ini file
 - todo: make the batch process more robust in case of internet not available without risk of flooding itch.io with requests (DNS resolve, cable removed, etc.)
 - todo: chrome driver installer has a downloader that causes problems when printing to file. Override that
-- todo: ability to download screenshots as single images from the product page
+- todo: ability to download screenshots as single images from the product page (example: https://bootdiskrevolution.itch.io/bleed)
 - todo: html page downloader
 
 ## The compiled version
 
-- Under releases you can download a command line tool for Windows that is basically this script compiled. It allows you to use the downloader without installing Python and doing all the stuff described in here. You just download it, unzip it, open a command prompt, navigate to the .exe directory and execute the program. Unfortunaly I have a feeling that your antivirus will NOT be happy with it. So, if you trust it, run it, if you don't, install Python and do everything else as described here above
-- To compile the script like I did, do all of the steps here above and then from a command prompt run (it takes all the necesary steps to create the .exe file on your machine by yourself):
+- Under releases you can download a command line tool for Windows that is basically this script compiled. It allows you to use the downloader without installing Python and doing all the stuff described in here. You just download it, unzip it, open a command prompt, navigate to the .exe directory and execute the program. Unfortunately I have a feeling that your antivirus will NOT be happy with it. So, if you trust it, run it, if you don't, install Python and do everything else as described here above
+- To compile the script like I did, do all of the steps here above and then from a command prompt run (it takes all the necessary steps to create the .exe file on your machine by yourself):
 ```
 buildbinary.cmd
 ```
-## Honorable mention
+## Honourable mention
 
 This script was originally based on https://github.com/shakeyourbunny/itch-downloader with some modifications
