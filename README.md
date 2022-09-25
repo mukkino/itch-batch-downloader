@@ -140,7 +140,7 @@ welcome.
 ## The compiled version
 
 - Under releases you can download a command line tool for Windows that is basically this script compiled. It allows you to use the downloader without installing Python and doing all the stuff described in here. You just download it, unzip it, open a command prompt, navigate to the .exe directory and execute the program. Unfortunaly I have a feeling that your antivirus will NOT be happy with it. So, if you trust it, run it, if you don't, install Python and do everything else as described here above
-- To compile the script like I did, do all of the steps here above and then from a command prompt run (it takes all the necesary steps to create the .exe file on your machine by yourself)
+- To compile the script like I did, do all of the steps here above and then from a command prompt run (it takes all the necesary steps to create the .exe file on your machine by yourself):
 ```
 buildbinary.cmd
 ```
