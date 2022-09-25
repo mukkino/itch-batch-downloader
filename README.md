@@ -63,7 +63,7 @@ py -m pip install colorama
 ```
 pip install -r requirements.txt
 ```
-- download [UPX](https://upx.github.io/). This version has been tested against [upx-3.96-win64.zip](https://github.com/upx/upx/releases/tag/v3.96)
+- download [upx](https://upx.github.io/). This version has been tested against [upx-3.96-win64.zip](https://github.com/upx/upx/releases/tag/v3.96)
 - unzip the files from upx-3.96-win64.zip (or your version number) in the same directory as the itch-batch-downloader.py script and rename the directory to just "upx" (rather than the full version you are using as originally in the name)
 
 - from time to time, if you wish to upgrade your packages in your virtual environment, use:
