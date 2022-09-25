@@ -115,8 +115,7 @@ debug_logs = OFF
 
 ## Known bugs and caveats
 
-These known limitations may be fixed in the future, pull requests for extending the functionality and fixing bugs are
-welcome.
+These known limitations may be fixed in the future
 
 - info: once the script runs, you can only stop it with control+c
 - info: there may be games which cannot be downloaded, because the developers put them on a dropbox or google drive, though this will be written to stdout as a warning that the script is unable to download it. [This](https://nattwentea.itch.io/deadly-revelation) is an example of that. The issue is that we are not talking about just one simple download but an actually export of Google Sheets files to some other format in some cases
