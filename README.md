@@ -59,7 +59,7 @@ py -m pip install ffmpeg-python
 py -m pip install pyOpenSSL
 py -m pip install colorama
 ```
-- note: The above packages can also be installed with the following command:
+- note - the above packages can also be installed with the following command:
 ```
 pip install -r requirements.txt
 ```
