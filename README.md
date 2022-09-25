@@ -106,12 +106,12 @@ download_videos = ON
 debug_logs = OFF
 ```
 - what you see there are the defaults. ON is for enabled and OFF is suggested for disabled but any value other then ON will do
-  - download_directory: defaults to "Downloads" and this folders gets created where the script is. You can specify a different path for your downloads. Example: C:\itch Downloads
-  - cookie_file: name (and path if you want) of the cookie file
-  - create_pdf: together with the downloads creates a PDF of the product page. Once created it won't recreate new ones unless something changed in the page. Older versions are renamed and not deleted. Any value different from ON will disable this option
-  - create_png: together with the downloads creates a .png image of the product page. Once created it won't recreate new ones unless something changed in the page. Older versions are renamed and not deleted. Any value different from ON will disable this option
-  - download_videos: downloads videos embedded in the product page. Once downloaded will redownload only if different. Older versions are overwritten. Any value different from ON will disable this option
-  - debug_logs: verbose output. Any value different from ON will disable this option
+  - **download_directory**: defaults to "Downloads" and this folders gets created where the script is. You can specify a different path for your downloads. Example: C:\itch Downloads
+  - **cookie_file**: name (and path if you want) of the cookie file
+  - **create_pdf**: together with the downloads creates a PDF of the product page. Once created it won't recreate new ones unless something changed in the page. Older versions are renamed and not deleted. Any value different from ON will disable this option
+  - **create_png**: together with the downloads creates a .png image of the product page. Once created it won't recreate new ones unless something changed in the page. Older versions are renamed and not deleted. Any value different from ON will disable this option
+  - **download_videos**: downloads videos embedded in the product page. Once downloaded will redownload only if different. Older versions are overwritten. Any value different from ON will disable this option
+  - **debug_logs**: verbose output. Any value different from ON will disable this option
 
 ## Known bugs and caveats
 
