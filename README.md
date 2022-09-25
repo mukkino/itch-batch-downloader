@@ -11,7 +11,7 @@ the purpose is to have all your purchases organised in directories and downloade
 
 - enough storage for your games
 - itch.io login cookies in a Netscape cookies.txt format (see below)
-- an operating system which is supported by Python 3. Note that this script has been tested only on Microsoft Windows
+- an operating system which is supported by Python 3. Note that this script has been tested only on Microsoft Windows 10 and 11
 
 ## Usage
 
