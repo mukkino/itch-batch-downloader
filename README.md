@@ -5,6 +5,8 @@ itch batch downloader is a python script that allows you to download all items b
 note that you can only download games from itch.io with this which are bound to your account. You cannot pirate games on
 itch.io with that
 
+the purpose is to have all your purchases organised in directories and downloaded in batch on the first run, ability to interrupt and restart the batch, and re-run it occasionally to capture any difference, new downloads, etc.
+
 ## Requirements
 
 - enough storage for your games
@@ -116,20 +118,32 @@ debug_logs = OFF
 These known limitations may be fixed in the future, pull requests for extending the functionality and fixing bugs are
 welcome.
 
-- once the script runs, you can only stop it with control+c
-- there may be games which cannot be downloaded, because the developers put them on a dropbox or google drive, though this will be written to stdout as a warning that the script is unable to download it. [This](https://nattwentea.itch.io/deadly-revelation) is an example of that. The issue is that we are not talking about just one simple download but an actually export of Google Sheets files to some other format in some cases
-- when taking screenshot/creating PDFs, some adult-only products might show a confirmation pop-up mentioning you agree on seeing those contents. It allows for a checkbox "do not ask again". Suggestion: if you are ok with those contents, open an adult-only page, confirm you do not want to see that warning anymore (remember the choice) and export your cookies again. This way this script will work for all the adult-only products and the exported .png/.pdf will be showing the corresponding page contents rather then the pop-up warning. If you do not have an adult-only link handy showing the pop-up, [here](https://xoshdarkheart.itch.io/midnights-kiss) is one
-- currently, there is no filtering by operating system. everything is downloaded
-- currently, there is no blacklist for not downloading stuff
-- currently, some external links when downloading videos might throw errors as the external domain is not supported (spotify, soundcloud, etc)
-- currently, videos in the comments are not downloaded, only the ones in the product page
-- currently, videos with the same download link and modified contents get overwritten
-- currently, the list of downloads in debug mode won't show an actual download number (you will need to figure out the number by counting the rows)
+- info: once the script runs, you can only stop it with control+c
+- info: there may be games which cannot be downloaded, because the developers put them on a dropbox or google drive, though this will be written to stdout as a warning that the script is unable to download it. [This](https://nattwentea.itch.io/deadly-revelation) is an example of that. The issue is that we are not talking about just one simple download but an actually export of Google Sheets files to some other format in some cases
+- info: when taking screenshot/creating PDFs, some adult-only products might show a confirmation pop-up mentioning you agree on seeing those contents. It allows for a checkbox "do not ask again". Suggestion: if you are ok with those contents, open an adult-only page, confirm you do not want to see that warning anymore (remember the choice) and export your cookies again. This way this script will work for all the adult-only products and the exported .png/.pdf will be showing the corresponding page contents rather then the pop-up warning. If you do not have an adult-only link handy showing the pop-up, [here](https://xoshdarkheart.itch.io/midnights-kiss) is one, and [here](https://adira.itch.io/tension) another one
+- info: currently, there is no filtering by operating system. everything is downloaded
+- info: currently, there is no blacklist for not downloading stuff
+- info: currently, some external links when downloading videos might throw errors as the external domain is not supported (spotify, soundcloud, etc)
+- info: currently, videos in the comments are not downloaded, only the ones in the product page
+- info: currently, videos with the same download link and modified contents get overwritten
+- info: currently, the list of downloads in debug mode won't show an actual download number (you will need to figure out the number by counting the rows)
+- info: downloads file names will be changed to prevent problems with special characters and duplicate names
+- bug: find out why at the end of execution sometimes the following is displayed: "Press ENTER to exit.^[[?1;0c"
+- todo: add proper Python logging and sterr/stout handling rather than the verbose debug we have at the moment
+- todo: add downloads by list, single item or search result (for free items, for example)
+- todo: add command line options rather then only .ini file
+- todo: make the batch process more robust in case of internet not available without risk of flooding itch.io with requests (DNS resolve, cable removed, etc.)
+- todo: chrome driver installer has a downloader that causes problems when printing to file. Override that
+- todo: ability to download screenshots as single images from the product page
+- todo: html page downloader
 
+## The compiled version
 
-
-
-
-## honorable mention
+- Under releases you can download a command line tool for Windows that is basically this script compiled. It allows you to use the downloader without installing Python and doing all the stuff described in here. You just download it, unzip it, open a command prompt, navigate to the .exe directory and execute the program. Unfortunaly I have a feeling that your antivirus will NOT be happy with it. So, if you trust it, run it, if you don't, install Python and do everything else as described here above
+- To compile the script like I did, do all of the steps here above and then from a command prompt run (it takes all the necesary steps to create the .exe file on your machine by yourself)
+```
+buildbinary.cmd
+```
+## Honorable mention
 
 This script was originally based on https://github.com/shakeyourbunny/itch-downloader with some modifications
