@@ -83,7 +83,7 @@ deactivate
 .\env\Scripts\activate
 ```
 
-## Tips and Tricks
+## Tips and tricks
 
 - downloaded files are checked with the online version. if they are identical, they will be skipped
 - for binding your games to your account (itch.io does not do that automatically with bundles) you should install an
