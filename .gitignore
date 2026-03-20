@@ -9,3 +9,7 @@ cookies*
 *.bak
 itch-downloader.ini
 itch-downloader.spec
+.DS_Store
+/Downloads
+/env
+*.xz

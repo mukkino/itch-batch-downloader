@@ -53,84 +53,130 @@ def printProgressBar(iteration, total, prefix='', suffix='', usepercent=True, de
 
 def download_a_file(url, filename="", session=None, cookies=None, rename_old=True, skip_if_identical=True, debugon=False):
     # returns true if the file was downloaded
-    if cookies == None and session != None:
+    if cookies is None and session is not None:
         cookies = session.cookies
-    if session == None:
+    if session is None:
         session = requests.Session()
-    dlurl = url
+
+    dlurl = url  # keep the original string for later use
     newDownloads = 0
 
-    # check download if available and metadata
-    data = session.head(dlurl)
-    if data.status_code == 200:
-        dltime = data.headers["last-modified"]
-        datalength = int(data.headers["content-length"])
+    # Detect Cloudflare‑mirrored URLs
+    is_cloudflare = dlurl.startswith("https://itchio-mirror.") or dlurl.startswith("https://r2.cloudflarestorage.com")
 
-        if os.path.exists(filename) and skip_if_identical:
-            stats = os.stat(filename)
-            if dateparser.parse(dltime).timestamp() == stats.st_mtime and datalength == stats.st_size:
-                print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + "[INFO] File {} already fully downloaded and identical to online version, skipping".format(filename))
+    if is_cloudflare:
+        # Direct GET because of the time constraint
+        data = session.get(dlurl, stream=True, cookies=cookies)
+    else:
+        data = session.head(dlurl)
+    if data.status_code != 200:
+        return False
+
+    datadownloaded = 0
+
+    # figure out file name
+    raw_name = ""
+    cd = data.headers.get("content-disposition")
+    if cd and "filename=" in cd:
+        raw_name = cd.split("filename=")[-1].strip('";\'')
+    else:
+        # Fallback: last path component of the URL (without query string)
+        raw_name = dlurl.split("/")[-1].split("?")[0]
+
+    # final path
+    if filename == "" or os.path.isdir(filename):
+        # ``filename`` is a directory (or empty) → put the file inside it
+        dest_dir = filename if os.path.isdir(filename) else os.getcwd()
+        final_path = os.path.join(dest_dir, raw_name)
+    else:
+        # Caller supplied an explicit file name
+        final_path = filename
+
+    # Skip‑if‑identical logic (only for non‑Cloudflare URLs, because we don’t have reliable metadata for the signed URLs)
+    if not is_cloudflare and os.path.exists(final_path) and skip_if_identical:
+        try:
+            dltime = data.headers["last-modified"]
+            datalength = int(data.headers["content-length"])
+            stats = os.stat(final_path)
+            if (dateparser.parse(dltime).timestamp() == stats.st_mtime and datalength == stats.st_size):
+                print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + f"[INFO] File {final_path} already fully downloaded - skipping")
                 return False
+        except Exception:
+            # If any header is missing we just fall through to a fresh download
+            pass
 
-        datadownloaded = 0
-
-        if filename == "":
-            filename = data.headers["content-disposition"].split("'")[-1]
-        shortfilename = filename.split(os.sep)[-1]
-        incompletefilename = filename + ".incomplete"
-        starttime = time.time()
-
-        # rename old download if necessary
-        now = datetime.now()
-        date_time = now.strftime("%Y%m%d%H%M%S")
-        if os.path.exists(filename) and rename_old:
-            newOldName = filename + "_" + str(date_time)
-            print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + "[INFO] Renaming {} to {}.".format(filename, newOldName + ".old"))
-            if os.path.exists(filename + ".old"):
-                os.remove(filename + ".old")
-            if os.path.exists(newOldName + ".old"):
-                os.remove(newOldName + ".old")
-            os.rename(filename, newOldName + ".old")
-
-        # start download
-        if debugon:
-            print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + "[DEBUG] Starting download of {} (-> {})".format(dlurl, filename))
-        else:
-            print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + "[INFO] Starting download of {}".format(filename))
-        with open(incompletefilename, "wb") as f:
-            with session.get(dlurl, stream=True, cookies=cookies) as downloaddata:
-                for chunk in downloaddata.iter_content(chunk_size=8192):
-                    if chunk:  # filter out keep-alive
-                        f.write(chunk)
-                        datadownloaded += len(chunk)
-                        difftime = time.time() - starttime
-                        if difftime == 0:
-                            kbs = (datadownloaded / 1) / 1024
-                        else:
-                            kbs = (datadownloaded / difftime) / 1024
-                        mysuffix = "{} / {} MB ({} KB/s)".format(round(datadownloaded / 1024 / 1024, 1),
-                                                                 round(datalength / 1024 / 1024, 1), round(kbs, 1))
-                        printProgressBar(datadownloaded, datalength, suffix=shortfilename, prefix=mysuffix,
-                                         usepercent=False, debugon=debugon)
-        f.close()
-
-        # finish download
-        os.rename(incompletefilename, filename)
-        newDownloads = newDownloads + 1
-
-        # check size
-        sizeondisk = os.path.getsize(filename)
-        if debugon:
-            print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + "[DEBUG] " + "filename: {}, disk: {}, http: {}".format(filename, sizeondisk, datalength))
-        if sizeondisk != datalength:
-            print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + "[INFO] Size on Disk differs from HTTP")
+    # Store data stream / GET
+    if is_cloudflare:
+        # We initialized with GET
+        data_stream = data
+    else:
+        # For the normal CDN case we now do the real GET
+        data_stream = session.get(dlurl, stream=True, cookies=cookies)
+        if data_stream.status_code != 200:
+            print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + f"{Fore.RED}[ERROR]{Style.RESET_ALL} GET request failed ({data_stream.status_code})")
             return False
 
-        # touch up timestamp
-        timestamp = int(dateparser.parse(dltime).timestamp())
-        os.utime(filename, (timestamp, timestamp))
+    # Rename old file if requested (only when a *file* exists, not a dir)
+    if os.path.exists(final_path) and rename_old:
+        now = datetime.now()
+        ts = now.strftime("%Y%m%d%H%M%S")
+        old_name = f"{final_path}_{ts}.old"
+        print(
+            datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            + " "
+            + f"[INFO] Renaming {final_path} → {old_name}"
+        )
+        if os.path.exists(old_name):
+            os.remove(old_name)
+        os.rename(final_path, old_name)
 
-        # done
-        return True
+    # start download
+    if debugon:
+        print(datetime.now().strftime("%Y-%m-%d %H:%M:%S")+ " " + f"[DEBUG] Starting download of {dlurl} → {final_path}")
     else:
+        print(datetime.now().strftime("%Y-%m-%d %H:%M:%S")+ " "+ f"[INFO] Starting download of {final_path}")
+
+    incompletefilename = final_path + ".incomplete"
+    starttime = time.time()
+    datadownloaded = 0
+
+    # Get the expected length (might be missing for Cloudflare URLs)
+    try:
+        datalength = int(data_stream.headers.get("content-length", 0))
+    except Exception:
+        datalength = 0
+
+    with open(incompletefilename, "wb") as f:
+        for chunk in data_stream.iter_content(chunk_size=8192):
+            if not chunk:
+                continue
+            f.write(chunk)
+            datadownloaded += len(chunk)
+            difftime = time.time() - starttime
+            if difftime == 0:
+                kbs = (datadownloaded / 1) / 1024
+            else:
+                kbs = (datadownloaded / difftime) / 1024
+            suffix = os.path.basename(final_path)
+            prefix = f"{round(datadownloaded/1024/1024,1)}/{round(datalength/1024/1024,1)} MB ({round(kbs,1)} KB/s)"
+            printProgressBar(datadownloaded, datalength, suffix=suffix, prefix=prefix, usepercent=False, debugon=debugon)
+
+    # finish download
+    os.rename(incompletefilename, final_path)
+
+    # check size
+    sizeondisk = os.path.getsize(final_path)
+    if debugon:
+        print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + "[DEBUG] " + "filename: {}, disk: {}, http: {}".format(filename, sizeondisk, datalength))
+    if datalength and sizeondisk != datalength:
+        print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + "[INFO] Size on Disk differs from HTTP")
         return False
+
+    # touch up timestamp
+    dltime = data.headers.get("last-modified")
+    if dltime:
+        ts = int(dateparser.parse(dltime).timestamp())
+        os.utime(final_path, (ts, ts))
+
+    # done
+    return True
