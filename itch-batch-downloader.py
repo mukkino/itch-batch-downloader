@@ -1,6 +1,6 @@
 """
 Based on https://github.com/shakeyourbunny/itch-downloader
-THanks to sumitaghosh (https://github.com/sumitaghosh) for the latest merged patch (MAC + back to work on Windows too)
+Thanks to sumitaghosh (https://github.com/sumitaghosh) for the latest merged patch (MAC + back to work on Windows too)
 """
 
 import configparser
