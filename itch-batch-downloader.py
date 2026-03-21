@@ -1,5 +1,6 @@
 """
 Based on https://github.com/shakeyourbunny/itch-downloader
+THanks to sumitaghosh (https://github.com/sumitaghosh) for the latest merged patch (MAC + back to work on Windows too)
 """
 
 import configparser
@@ -44,7 +45,7 @@ import traceback
 from colorama import Fore
 from colorama import Style
 
-version = "0.1.0"
+version = "0.1.1"
 
 # used to count if a certain page received an update in terms of contents. if it did this is used for creating a new version of
 # the .png and .pdf files
