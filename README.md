@@ -346,24 +346,24 @@ Set to `ON` to enable detailed debug output.
 
 These known limitations may be fixed in the future.
 
-- TODO: currently, there is no filtering by operating system. everything is downloaded
-- TODO: currently, there is no blacklist for not downloading stuff
-- TODO: currently, some external links when downloading videos might throw errors as the external domain is not supported (spotify, soundcloud, etc)
-- TODO: currently, videos in the comments are not downloaded, only the ones in the product page
-- TODO: currently, videos with the same download link and modified contents get overwritten
-- TODO: currently, the list of downloads in debug mode won't show an actual download number (you will need to figure out the number by counting the rows)
-- TODO: add proper Python logging and stderr/stdout handling rather than the verbose debug we have at the moment
-- TODO: add downloads by list, single item or search result (for free items, for example)
-- TODO: add command line options rather than only .ini file
-- TODO: make the batch process more robust in case of internet not available without risk of flooding itch.io with requests (DNS resolve, cable removed, etc.)
-- TODO: chrome driver installer has a downloader that causes problems when printing to file. Override that
-- TODO: ability to download screenshots as single images from the product page (example: https://bootdiskrevolution.itch.io/bleed)
-- TODO: html page downloader
-- TODO: download file names should be sanitized to prevent problems with special characters, unsafe names, and path-related filename collisions
-- TODO: detect expired cookies and warn the user
-- TODO: make HTML parsing more resilient to itch.io layout changes
-- TODO: prevent failures caused by excessively long file paths
-- bug: find out why at the end of execution sometimes the following is displayed: `"Press ENTER to exit.^[[?1;0c"` (On Microsoft Windows)
+- TODO: currently, there is no filtering by operating system. everything is downloaded.
+- TODO: currently, there is no blacklist for not downloading stuff.
+- TODO: currently, some external links when downloading videos might throw errors as the external domain is not supported (spotify, soundcloud, etc.).
+- TODO: currently, videos in the comments are not downloaded, only the ones in the product page.
+- TODO: currently, videos with the same download link and modified contents get overwritten.
+- TODO: currently, the list of downloads in debug mode won't show an actual download number (you will need to figure out the number by counting the rows).
+- TODO: add proper Python logging and stderr/stdout handling rather than the verbose debug we have at the moment.
+- TODO: add downloads by list, single item or search result (for free items, for example).
+- TODO: add command line options rather than only .ini file.
+- TODO: make the batch process more robust in case of internet not available without risk of flooding itch.io with requests (DNS resolve, cable removed, etc.).
+- TODO: chrome driver installer has a downloader that causes problems when printing to file. Override that.
+- TODO: ability to download screenshots as single images from the product page (example: https://bootdiskrevolution.itch.io/bleed).
+- TODO: html page downloader.
+- TODO: download file names should be sanitized to prevent problems with special characters, unsafe names, and path-related filename collisions.
+- TODO: detect expired cookies and warn the user.
+- TODO: make HTML parsing more resilient to itch.io layout changes.
+- TODO: prevent failures caused by excessively long file paths.
+- bug: find out why at the end of execution sometimes the following is displayed: `"Press ENTER to exit.^[[?1;0c"` (On Microsoft Windows).
 
 ## Corner cases to keep in mind for testing
 
