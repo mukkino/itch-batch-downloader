@@ -110,11 +110,11 @@ the default configuration.
 
 From the script directory run:
 
-    python itch-downloader.py
+    python itch-batch-downloader.py
 
 or if your system uses `python3`:
 
-    python3 itch-downloader.py
+    python3 itch-batch-downloader.py
 
 If unsure, try the first command.
 
