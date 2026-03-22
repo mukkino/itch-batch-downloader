@@ -75,7 +75,7 @@ The script has primarily been tested on Windows, but most of the code is cross-p
 
 Open:
 
-https://itch.io
+[https://itch.io/](https://itch.io)
 
 Log in to your account.
 
