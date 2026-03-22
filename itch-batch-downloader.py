@@ -593,7 +593,7 @@ def main(config):
         print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " " + f"{Fore.RED}[ERROR]{Style.RESET_ALL} Could not access {mypurchases_url} properly [{r.status_code}]")
 
 if __name__ == "__main__":
-    print("itch-batch-downloader.py {} (c) 2022-2026 Fabio Lichinchi (mukka)".format(version))
+    print("itch-batch-downloader.py {} (c) 2022-2026 alterego.cc Fabio Lichinchi (mukka)".format(version))
     print("")
 
     config = configparser.ConfigParser()
