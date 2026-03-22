@@ -205,26 +205,117 @@ deactivate
 - for exporting cookies, there is the addon "[cookies.txt](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/)" for Firefox or "[Get cookies.txt](https://chromewebstore.google.com/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc)" for Chrome
 - once you start downloading something, you will notice in the same folder as your downloads, a file called itch-batch-downloader-track.txt. This file contains a number and is basically the number of the download currently being processed. If you would like to restart the downloads from the first item, just delete the file or change the number to the download number of the item you are interested in. You can obtain a list of the downloads and their order by activating the debug mode (see below)
 
-## The configuration file
+## Configuration file
 
-- first time the script is executed creates the following file in the same dir where the script is: itch-batch-downloader.ini
-- content is:
-```
-[DEFAULT]
-download_directory = Downloads
-cookie_file = cookies-itch.txt
-create_pdf = ON
-create_png = ON
-download_videos = ON
-debug_logs = OFF
-```
-- what you see there are the defaults. ON is for enabled and OFF is suggested for disabled but any value other then ON will do
-  - **download_directory**: defaults to "Downloads" and this folders gets created where the script is. You can specify a different path for your downloads. Example: C:\itch Downloads
-  - **cookie_file**: name (and path if you want) of the cookie file
-  - **create_pdf**: together with the downloads creates a PDF of the product page. Once created it won't recreate new ones unless something changed in the page. Older versions are renamed and not deleted. Any value different from ON will disable this option
-  - **create_png**: together with the downloads creates a .png image of the product page. Once created it won't recreate new ones unless something changed in the page. Older versions are renamed and not deleted. Any value different from ON will disable this option
-  - **download_videos**: downloads videos embedded in the product page. Once downloaded will redownload only if different. Older versions are overwritten. Any value different from ON will disable this option
-  - **debug_logs**: verbose output. Any value different from ON will disable this option
+When the script is executed for the first time it automatically creates
+a configuration file in the same directory as the script:
+
+    itch-batch-downloader.ini
+
+The default content of the file is:
+
+    [DEFAULT]
+    download_directory = Downloads
+    cookie_file = cookies-itch.txt
+    create_pdf = ON
+    create_png = ON
+    download_videos = ON
+    debug_logs = OFF
+
+These values represent the **default behaviour of the downloader**.
+
+Options that use `ON` / `OFF` act as simple switches:
+
+-   `ON` → feature enabled\
+-   any value **other than `ON`** → feature disabled
+
+------------------------------------------------------------------------
+
+### download_directory
+
+Default: `Downloads`
+
+This is the directory where all downloaded content will be saved.
+
+If the directory does not exist it will be **created automatically** in
+the same location as the script.
+
+You can also specify an absolute path. Example:
+
+    C:\itch Downloads
+
+------------------------------------------------------------------------
+
+### cookie_file
+
+Default: `cookies-itch.txt`
+
+Specifies the file containing the exported itch.io cookies.
+
+You may provide either:
+
+-   just the filename (if it is in the script directory), or\
+-   a full path to the cookie file.
+
+------------------------------------------------------------------------
+
+### create_pdf
+
+Default: `ON`
+
+When enabled, the script creates a **PDF snapshot of the product page**
+alongside the downloaded files.
+
+The script detects changes in the page:
+
+-   if the page has **not changed**, the PDF is not recreated\
+-   if the page **changes**, a new PDF is generated
+
+Older versions are **renamed and preserved** rather than deleted.
+
+Set to any value other than `ON` to disable.
+
+------------------------------------------------------------------------
+
+### create_png
+
+Default: `ON`
+
+When enabled, the script captures a **PNG screenshot of the product
+page**.
+
+Behaviour is the same as for PDFs:
+
+-   screenshots are only recreated if the page changes\
+-   older versions are **renamed and preserved**
+
+Set to any value other than `ON` to disable.
+
+------------------------------------------------------------------------
+
+### download_videos
+
+Default: `ON`
+
+Downloads videos embedded in the product page.
+
+If the video changes, it will be downloaded again.\
+Existing videos may be overwritten when a newer version is detected.
+
+Set to any value other than `ON` to disable.
+
+------------------------------------------------------------------------
+
+### debug_logs
+
+Default: `OFF`
+
+Enables verbose logging in the console.
+
+This option is useful for troubleshooting or understanding what the
+script is doing internally.
+
+Set to `ON` to enable detailed debug output.
 
 ## Known bugs and caveats
 
