@@ -75,7 +75,7 @@ The script has primarily been tested on Windows, but most of the code is cross-p
 
 Open:
 
-[https://itch.io/](https://itch.io)
+[https://itch.io/](https://itch.io/)
 
 Log in to your account.
 
@@ -363,7 +363,8 @@ These known limitations may be fixed in the future.
 - TODO: detect expired cookies and warn the user.
 - TODO: make HTML parsing more resilient to itch.io layout changes.
 - TODO: prevent failures caused by excessively long file paths.
-- bug: find out why at the end of execution sometimes the following is displayed: `"Press ENTER to exit.^[[?1;0c"` (On Microsoft Windows).
+- BUG: find out why at the end of execution sometimes the following is displayed: `"Press ENTER to exit.^[[?1;0c"` (On Microsoft Windows).
+- BUG: Chrome/Selenium are currently still initialized by the script even if PNG/PDF creation is disabled, so a working Chrome/WebDriver setup may still be required in the current version.
 
 ## Corner cases to keep in mind for testing
 
