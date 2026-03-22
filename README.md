@@ -482,7 +482,7 @@ In this project it is used to reduce the size of the generated Windows executabl
 
 The program can be built without UPX, so this step is optional.
 
-Download [UPX](https://upx.github.io/). Tested version: [v5.1.1](https://github.com/upx/upx/releases/tag/v5.1.1)
+Download [UPX](https://upx.github.io/). Tested version: [v5.1.1](https://github.com/upx/upx/releases/tag/v5.1.1). Current release was eventually compiled without UPX.
 
 Steps:
 
@@ -521,7 +521,7 @@ The script will:
 
 - run PyInstaller
 - produce the standalone `.exe`
-- use UPX compression if the `upx` folder is present
+- UPX is disabled
 
 This is the recommended method on Windows.
 
