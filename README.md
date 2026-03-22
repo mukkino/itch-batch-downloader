@@ -306,52 +306,258 @@ These known limitations may be fixed in the future
 
 ## How to compile
 
-- Under releases you can download a command line tool for Windows and macOS that is basically this script compiled. It allows you to use the downloader without installing Python and doing all the stuff described in here. You just download it, unzip it, open a command prompt, navigate to the executable directory and execute the program. Unfortunately I have a feeling that your antivirus will NOT be happy with it. So, if you trust it, run it, if you don't, install Python and do everything else as described here above
-- To compile the script like I did, do all of the steps here above and then from a command prompt run (it takes all the necessary steps to create the .exe file on your machine by yourself):
-```
-buildbinary.cmd
-```
+Prebuilt command-line binaries for **Windows** and **macOS** are
+available in the **Releases** section.\
+These are compiled versions of the script and allow you to use the
+downloader **without installing Python**.
 
-However, before getting there, you should have the following steps sorted to get executables similar to the ones here for Windows. Linux and macOS are basically the same, with some minor differences highlited in this guide:
+To use a release binary:
 
-- install [Python for Windows](https://www.python.org/downloads/windows/). This itch-batch-downloader version has been tested against version [3.14.3](https://www.python.org/downloads/release/python-3143/) but any Python 3.9+ version should work - Windows installer (64-bit). Install with "Install Now", tick "Add Python 3.14 to PATH" and "Disable path length limit". macOS and Linux do the same thing but for the respective OS versions
-- open cmd shell (no need to be Administrator). At the command prompt go to the same directory where you have your itch-batch-downloader.py script and from there execute the following commands:
-```
-py -m pip install --upgrade pip
-py -m venv env
-.\env\Scripts\activate
-```
-- what they do is (in the same order as above):
-  - upgrade pip
-  - install virtual environment
-  - create a virtual environment
-  - activate your virtual environment
+1.  Download the archive for your platform.
+2.  Extract it.
+3.  Open a terminal (Command Prompt / Terminal).
+4.  Navigate to the directory containing the executable.
+5.  Run the program.
 
-- install the needed packages packages
-```
-pip install -r requirements.txt
-```
-- download [upx](https://upx.github.io/). This version has been tested against [v5.1.1](https://github.com/upx/upx/releases/tag/v5.1.1)
-- unzip the files from upx-5.1.1-win64.zip (or your version number) in the same directory as the itch-batch-downloader.py script and rename the directory to just "upx" (rather than the full version you are using as originally in the name)
-- install [pyinstaller](https://pyinstaller.org/en/stable/installation.html) and run buildbinary.cmd to compile the .exe on Windows
-- note: you could o the same on macOS and Linux via pyinstaller. upx is not supported on these platforms so you will just run buildbinary.cmd after having installed pyinstaller
+Because the binary is produced with **PyInstaller** and may also be
+compressed with **UPX**, some antivirus software may flag it as
+suspicious. If you prefer not to run the prebuilt binary, you can
+compile the tool yourself as described below.
 
-- from time to time, if you wish to upgrade your packages in your virtual environment, use (remember this will break the testing I did on the release. If you see problems you might need to rollback to the versions mentioned here):
+------------------------------------------------------------------------
+
+# Build from source
+
+The following instructions create a standalone executable **similar to
+the ones provided in the Releases section**.
+
+The process is:
+
+1.  Install Python
+2.  Create a virtual environment
+3.  Install dependencies
+4.  (Optional) install UPX
+5.  Build the executable
+
+------------------------------------------------------------------------
+
+# 1. Install Python
+
+Download Python from:
+
+https://www.python.org/downloads/
+
+This project has been **tested with Python 3.14.3**, but **any Python
+3.9+ version should work**.
+
+### Windows
+
+Download:
+
+https://www.python.org/downloads/windows/
+
+During installation:
+
+-   click **Install Now**
+-   enable **Add Python to PATH**
+-   enable **Disable path length limit**
+
+### macOS
+
+Install Python using one of the following:
+
+-   official installer from python.org
+-   Homebrew:
+
+```{=html}
+<!-- -->
 ```
-pip install -r requirements.txt --upgrade
+    brew install python
+
+### Linux
+
+Install Python from your distribution repository.
+
+Example (Ubuntu / Debian):
+
+    sudo apt install python3 python3-venv python3-pip
+
+------------------------------------------------------------------------
+
+# 2. Create a virtual environment
+
+Navigate to the directory containing the script:
+
+    itch-batch-downloader.py
+
+### Windows
+
+Open a **Command Prompt (no need to run it as Administrator)** and
+execute:
+
+    py -m pip install --upgrade pip
+    py -m venv env
+    .\env\Scripts\activate
+
+### macOS / Linux
+
+    python3 -m pip install --upgrade pip
+    python3 -m venv env
+    source env/bin/activate
+
+What these commands do:
+
+1.  upgrade `pip`
+2.  create a **virtual environment**
+3.  activate the environment
+
+------------------------------------------------------------------------
+
+# 3. Install required packages
+
+Install the dependencies listed in `requirements.txt`:
+
+    pip install -r requirements.txt
+
+------------------------------------------------------------------------
+
+# 4. Optional: install UPX (Windows only)
+
+**UPX** is an executable packer/compressor.\
+In this project it is used to reduce the size of the generated Windows
+executable.
+
+The program can be built **without UPX**, so this step is optional.
+
+Download:
+
+https://upx.github.io/
+
+Tested version:
+
+https://github.com/upx/upx/releases/tag/v5.1.1
+
+Steps:
+
+1.  Download the archive (for example `upx-5.1.1-win64.zip`)
+2.  Extract it in the same directory as `itch-batch-downloader.py`
+3.  Rename the extracted directory to just:
+
+```{=html}
+<!-- -->
 ```
-- if you would like to update your requirements.txt at this point use:
-```
-py -m pip freeze > requirements.txt
-```
-- to leave the virtual environment use
-```
-deactivate
-```
-- to reactivate the virtual environment use (from the same directory where the itch-batch-downloader.py script is located):
-```
-.\env\Scripts\activate
-```
+    upx
+
+The rename matters because the build setup expects the folder to be
+named **`upx`** rather than the full version name.
+
+Example:
+
+-   original folder: `upx-5.1.1-win64`
+-   renamed folder: `upx`
+
+------------------------------------------------------------------------
+
+# 5. Build the executable
+
+## Windows (using the provided build script)
+
+A Windows build script is already included:
+
+    buildbinary.cmd
+
+Run it from a Command Prompt opened in the same directory as the script:
+
+    buildbinary.cmd
+
+The script will:
+
+-   run PyInstaller
+-   produce the standalone `.exe`
+-   use UPX compression if the `upx` folder is present
+
+This is the **recommended method** on Windows.
+
+------------------------------------------------------------------------
+
+## Windows (manual build without the script)
+
+If you prefer to run the build process manually instead of using
+`buildbinary.cmd`, you can do it directly with PyInstaller. This
+produces an executable **similar to the ones distributed in the Releases
+section**.
+
+First install PyInstaller:
+
+    pip install pyinstaller
+
+Then run:
+
+    pyinstaller --onefile itch-batch-downloader.py
+
+The executable will be created inside the `dist` directory.
+
+If UPX is installed and available in the `upx` folder, PyInstaller may
+automatically use it during the build to reduce the executable size.
+
+------------------------------------------------------------------------
+
+## macOS / Linux
+
+`buildbinary.cmd` is a Windows batch file, so it is **not used on macOS
+or Linux**.
+
+Instead build the binary directly with PyInstaller:
+
+    pip install pyinstaller
+    pyinstaller --onefile itch-batch-downloader.py
+
+UPX compression is typically **not used on macOS and Linux**.
+
+------------------------------------------------------------------------
+
+# Updating dependencies (optional)
+
+If you want to upgrade packages inside the virtual environment:
+
+    pip install -r requirements.txt --upgrade
+
+Note: upgrading dependencies may break compatibility with the tested
+release.\
+**If problems appear after upgrading, you may need to roll back to the
+tested versions listed in `requirements.txt`.**
+
+------------------------------------------------------------------------
+
+# Updating requirements.txt
+
+To regenerate the dependency list:
+
+### Windows
+
+    py -m pip freeze > requirements.txt
+
+### macOS / Linux
+
+    pip freeze > requirements.txt
+
+------------------------------------------------------------------------
+
+# Managing the virtual environment
+
+Deactivate the virtual environment:
+
+    deactivate
+
+Reactivate it later from the project directory.
+
+### Windows
+
+    .\env\Scripts\activate
+
+### macOS / Linux
+
+    source env/bin/activate
 
 ## Honourable mention
 
