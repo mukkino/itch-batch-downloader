@@ -75,7 +75,7 @@ The script has primarily been tested on Windows, but most of the code is cross-p
 
 Open:
 
-[https://itch.io/](https://itch.io/)
+[Itch.io](https://itch.io/)
 
 Log in to your account.
 
@@ -90,7 +90,7 @@ Recommended browser extensions:
 - [Get cookies.txt LOCALLY](https://chromewebstore.google.com/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc) (Chrome / Chromium browsers).
 - [cookies.txt](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/) (Firefox).
 
-Export only itch.io cookies. If you export all of them it will also work, but it will be unsafe from a cybersecurity standpoint.
+Export only itch.io cookies. If you export all cookies it will still work, but it is unsafe from a cybersecurity standpoint.
 
 Save the exported file in the same directory as the script and rename it to:
 
