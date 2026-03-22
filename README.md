@@ -3,14 +3,14 @@
 A Python script that downloads all items bound to your itch.io account in batch.
 
 The downloader:
-- retrieves every item in your itch.io library
-- downloads all available files
+- retrieves items currently bound to your itch.io account/library
+- attempts to download all available files
 - optionally captures product pages as PNG and PDF
 - downloads embedded videos
 - preserves historical versions where possible
 - supports interrupting and resuming downloads
 
-The goal of the tool is to create a complete local archive of your itch.io purchases.
+The goal of the tool is to create the most complete local archive possible of your itch.io purchases.
 
 This script only downloads items bound to your account and does not bypass itch.io permissions.
 
@@ -24,7 +24,7 @@ This script only downloads items bound to your account and does not bypass itch.
   - PDF print
 - download embedded videos
 - version older metadata captures instead of overwriting
-- sanitize filenames to avoid filesystem issues
+- filename sanitization is not yet fully implemented
 - debug mode for detailed download tracking
 
 ## Requirements
@@ -32,7 +32,7 @@ This script only downloads items bound to your account and does not bypass itch.
 - Python 3.9 or newer
 - Python packages listed in `requirements.txt`
 - Sufficient disk space for your library
-- Exported itch.io cookies in Netscape format
+- Exported itch.io cookies in cookies.txt / Netscape-style format
 
 Optional (only needed for some features):
 
