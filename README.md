@@ -37,9 +37,9 @@ This script only downloads items bound to your account and does not bypass itch.
 
 ### Optional (only needed for some features)
 
-#### [Google Chrome](https://www.google.com/intl/en_us/chrome/): Required for features that use Selenium browser automation.
+#### [Google Chrome](https://www.google.com/intl/en_us/chrome/)
 
-If Chrome is not installed:
+Required for features that use Selenium browser automation. If Chrome is not installed:
 
 - Product page PDF snapshots will not be created (`create_pdf`).
 - Product page PNG screenshots will not be created (`create_png`).
@@ -346,29 +346,30 @@ Set to `ON` to enable detailed debug output.
 
 These known limitations may be fixed in the future.
 
-- todo: currently, there is no filtering by operating system. everything is downloaded
-- todo: currently, there is no blacklist for not downloading stuff
-- todo: currently, some external links when downloading videos might throw errors as the external domain is not supported (spotify, soundcloud, etc)
-- todo: currently, videos in the comments are not downloaded, only the ones in the product page
-- todo: currently, videos with the same download link and modified contents get overwritten
-- todo: currently, the list of downloads in debug mode won't show an actual download number (you will need to figure out the number by counting the rows)
-- todo: add proper Python logging and stderr/stdout handling rather than the verbose debug we have at the moment
-- todo: add downloads by list, single item or search result (for free items, for example)
-- todo: add command line options rather than only .ini file
-- todo: make the batch process more robust in case of internet not available without risk of flooding itch.io with requests (DNS resolve, cable removed, etc.)
-- todo: chrome driver installer has a downloader that causes problems when printing to file. Override that
-- todo: ability to download screenshots as single images from the product page (example: https://bootdiskrevolution.itch.io/bleed)
-- todo: html page downloader
-- todo: download file names should be sanitized to prevent problems with special characters, unsafe names, and path-related filename collisions
-- todo: detect expired cookies and warn the user
-- todo: make HTML parsing more resilient to itch.io layout changes
-- todo: prevent failures caused by excessively long file paths
+- TODO: currently, there is no filtering by operating system. everything is downloaded
+- TODO: currently, there is no blacklist for not downloading stuff
+- TODO: currently, some external links when downloading videos might throw errors as the external domain is not supported (spotify, soundcloud, etc)
+- TODO: currently, videos in the comments are not downloaded, only the ones in the product page
+- TODO: currently, videos with the same download link and modified contents get overwritten
+- TODO: currently, the list of downloads in debug mode won't show an actual download number (you will need to figure out the number by counting the rows)
+- TODO: add proper Python logging and stderr/stdout handling rather than the verbose debug we have at the moment
+- TODO: add downloads by list, single item or search result (for free items, for example)
+- TODO: add command line options rather than only .ini file
+- TODO: make the batch process more robust in case of internet not available without risk of flooding itch.io with requests (DNS resolve, cable removed, etc.)
+- TODO: chrome driver installer has a downloader that causes problems when printing to file. Override that
+- TODO: ability to download screenshots as single images from the product page (example: https://bootdiskrevolution.itch.io/bleed)
+- TODO: html page downloader
+- TODO: download file names should be sanitized to prevent problems with special characters, unsafe names, and path-related filename collisions
+- TODO: detect expired cookies and warn the user
+- TODO: make HTML parsing more resilient to itch.io layout changes
+- TODO: prevent failures caused by excessively long file paths
 - bug: find out why at the end of execution sometimes the following is displayed: `"Press ENTER to exit.^[[?1;0c"` (On Microsoft Windows)
 
 ## Corner cases to keep in mind for testing
 
 - There may be games which cannot be downloaded, because the developers put them on a dropbox or google drive, though this will be written to stdout as a warning that the script is unable to download it. [This](https://nattwentea.itch.io/deadly-revelation) is an example of that. The issue is that we are not talking about just one simple download but an actual export of Google Sheets files to some other format in some cases.
 - When taking screenshot/creating PDFs, some adult-only products might show a confirmation pop-up mentioning you agree on seeing those contents. It allows for a checkbox "do not ask again". Suggestion: if you are ok with those contents, open an adult-only page, confirm you do not want to see that warning anymore (remember the choice) and export your cookies again. This way this script will work for all the adult-only products and the exported .png/.pdf will be showing the corresponding page contents rather than the pop-up warning. If you do not have an adult-only link handy showing the pop-up, [here](https://xoshdarkheart.itch.io/midnights-kiss) is one, and [here](https://adira.itch.io/tension) another one.
+- Games that were purchased but not yet associated to the account (you will need to associate these manually via itch.io)
 - Download screenshots as single images from the product page. Example: [here](https://bootdiskrevolution.itch.io/bleed).
 
 ## How to compile
@@ -401,17 +402,11 @@ The process is:
 
 ### 1. Install Python
 
-Download Python from:
-
-https://www.python.org/downloads/
-
-This project has been tested with Python 3.14.3, but any Python 3.9+ version should work.
+Download [Python](https://www.python.org/downloads/). This project has been tested with Python 3.14.3, but any Python 3.9+ version should work.
 
 #### Windows
 
-Download:
-
-https://www.python.org/downloads/windows/
+Download [link](https://www.python.org/downloads/windows/)
 
 During installation:
 
@@ -488,13 +483,7 @@ In this project it is used to reduce the size of the generated Windows executabl
 
 The program can be built without UPX, so this step is optional.
 
-Download:
-
-[https://upx.github.io/](https://upx.github.io/)
-
-Tested version:
-
-[v5.1.1](https://github.com/upx/upx/releases/tag/v5.1.1)
+Download [UPX](https://upx.github.io/). Tested version: [v5.1.1](https://github.com/upx/upx/releases/tag/v5.1.1)
 
 Steps:
 
@@ -624,9 +613,7 @@ source env/bin/activate
 
 ### Why are some bundle items missing from the downloader?
 
-The downloader only processes items that appear in your purchases list:
-
-https://itch.io/my-purchases
+The downloader only processes items that appear in your [purchases list](https://itch.io/my-purchases).
 
 If you own a bundle, many items may not automatically be added to your library by itch.io.
 
@@ -634,11 +621,7 @@ Until they are added, they will not appear in your purchases list and the downlo
 
 To fix this, make sure all bundle items are added to your library first (for example using the tools mentioned in the Tips and tricks section).
 
-Once they appear under:
-
-https://itch.io/my-purchases
-
-the downloader will be able to process them normally.
+Once they appear under [my-purchases](https://itch.io/my-purchases) the downloader will be able to process them normally.
 
 ### Why do some downloads fail or show warnings?
 
