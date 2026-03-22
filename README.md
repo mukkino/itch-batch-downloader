@@ -217,9 +217,7 @@ Incomplete downloads may remain as partial files depending on the downloader sta
 
 - If you would like to associate free games with your account in batch, you can use tools such as [ItchClaim](https://github.com/Smart123s/ItchClaim).
 
-- If you purchased bundles, you may notice that itch.io does not automatically add all bundle items to your library. Many items remain only inside the bundle purchase page and do not appear under:
-
-  https://itch.io/my-purchases
+- If you purchased bundles, you may notice that itch.io does not automatically add all bundle items to your library. Many items remain only inside the bundle purchase page and do not appear under [my-purchases](my-purchases)
 
   Since the downloader reads items from your library/purchases list, those bundle items need to be added to your account first.
 
@@ -227,27 +225,20 @@ Incomplete downloads may remain as partial files depending on the downloader sta
 
   First install a user-script extension such as [Tampermonkey](https://www.tampermonkey.net/):
 
-  - Chrome version: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en
-  - Firefox version: https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/
+  - Chrome [version](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en)
+  - Firefox [version](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) 
 
   Then install a script that can automatically bind bundle items to your library, such as:
 
-  - itch.io bundle to library  
-    https://greasyfork.org/en/scripts/427686-itch-io-bundle-to-library
+  - [itch.io bundle to library](https://greasyfork.org/en/scripts/427686-itch-io-bundle-to-library)  
 
   This script allows you to add all the items from a single bundle page with one click.
 
   Large bundles (for example 500+ items) may span many pages (around 30 pages), but using the script you can add them page by page with only a fraction of the manual clicks normally required.
 
-  Once items are added to your library, they will appear under:
+  Once items are added to your library, they will appear under [my-purchases](my-purchases) and the downloader will be able to process them.
 
-  https://itch.io/my-purchases
-
-  and the downloader will be able to process them.
-
-- I also recently discovered a Chrome extension that may automate this process as well, although I cannot guarantee that it works:
-
-  https://chromewebstore.google.com/detail/itchio-bundle-auto-add-to/pbolegaohnnpillkpklefebilhanameg
+- I also recently discovered a Chrome extension called [itch.io Bundle Auto Add to Library](https://chromewebstore.google.com/detail/itchio-bundle-auto-add-to/pbolegaohnnpillkpklefebilhanameg) that may automate this process as well, although I cannot guarantee that it works.  
 
 ## Configuration file
 
