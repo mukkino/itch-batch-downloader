@@ -55,7 +55,7 @@ create_png = OFF
 
 #### [Microsoft Visual C++ Redistributable](https://www.microsoft.com/en-gb/download/details.aspx?id=48145)
 
-Install the x64 version if you are using 64-bit Python (most systems). This is needed on Windows only and it is available here.
+Install the x64 version if you are using 64-bit Python (most systems). This is needed on Windows only.
 
 Some Python packages used by the downloader include native compiled components (for example `cryptography`, `cffi`, and other compiled wheels).
 
