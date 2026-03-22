@@ -46,25 +46,30 @@ py -m venv env
 
 - install the following packages
 ```
-py -m pip install wheel
-py -m pip install requests
-py -m pip install dateparser
-py -m pip install bs4
-py -m pip install selenium
-py -m pip install webdriver_manager
-py -m pip install Pillow
-py -m pip install pyinstaller
-py -m pip install yt-dlp
-py -m pip install ffmpeg-python
-py -m pip install pyOpenSSL
+py -m pip install beautifulsoup4
 py -m pip install colorama
+py -m pip install cryptography
+py -m pip install dateparser
+py -m pip install ffmpeg-python
+py -m pip install pillow
+py -m pip install pyinstaller
+py -m pip install pyOpenSSL
+py -m pip install python-dotenv
+py -m pip install regex
+py -m pip install requests
+py -m pip install selenium
+py -m pip install trio
+py -m pip install trio-websocket
+py -m pip install webdriver-manager
+py -m pip install websocket-client
+py -m pip install yt-dlp
 ```
-- note - the above packages can also be installed with the following command:
+- note - while you could install those as suggested here above, in order to to keep the packages to the correct tested version, I suggest to run the following command instead:
 ```
 pip install -r requirements.txt
 ```
-- download [upx](https://upx.github.io/). This version has been tested against [upx-3.96-win64.zip](https://github.com/upx/upx/releases/tag/v3.96)
-- unzip the files from upx-3.96-win64.zip (or your version number) in the same directory as the itch-batch-downloader.py script and rename the directory to just "upx" (rather than the full version you are using as originally in the name)
+- download [upx](https://upx.github.io/). This version has been tested against [v5.1.1](https://github.com/upx/upx/releases/tag/v5.1.1)
+- unzip the files from upx-5.1.1-win64.zip (or your version number) in the same directory as the itch-batch-downloader.py script and rename the directory to just "upx" (rather than the full version you are using as originally in the name)
 
 - from time to time, if you wish to upgrade your packages in your virtual environment, use:
 ```
