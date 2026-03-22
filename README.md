@@ -29,9 +29,11 @@ This script only downloads items bound to your account and does not bypass itch.
 
 ## Requirements
 
-- enough storage for your games
-- itch.io login cookies in a Netscape cookies.txt format (see below)
-- an operating system which is supported by Python 3. Note that this script has been tested only on Microsoft Windows 11
+- Python 3
+- sufficient disk space for your library
+- exported itch.io cookies in Netscape format
+
+The script has primarily been tested on Windows, but most of the code is cross-platform and should work on Linux and macOS.
 
 ## Usage
 
