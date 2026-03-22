@@ -99,7 +99,7 @@ def fullpage_screenshot(driver, file, debugon=False):
 def wait_until_images_loaded(driver, timeout=30):
     """ Waits for all images & background images to load """
     driver.set_script_timeout(timeout)
-    driver.execute_async_script(dedent('''
+    driver.execute_async_script(dedent(r'''
         function extractCSSURL(text) {
             var url_str = text.replace(/.*url\((.*)\).*/, '$1');
             if (url_str[0] === '"') {
@@ -119,7 +119,7 @@ def wait_until_images_loaded(driver, timeout=30):
         function imageResolved(url) {
             return new $.Deferred(function (d) {
                 var img = new Image();
-                img.onload = img.onload = function () {
+                img.onload = img.onerror = function () {
                     d.resolve(url);
                 };
                 img.src = url;

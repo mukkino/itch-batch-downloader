@@ -5,7 +5,7 @@ if exist dist rmdir /q /s dist
 
 if exist itch-batch-downloader.exe del itch-batch-downloader.exe
 
-pyinstaller --onefile itch-batch-downloader.py --upx-dir upx
+pyinstaller --onefile itch-batch-downloader.py --noupx --clean
 
 if exist dist\itch-batch-downloader.exe move dist\itch-batch-downloader.exe .
 if exist dist rmdir /q /s dist
