@@ -30,7 +30,7 @@ python3 itch-downloader.py
 ### Detailed usage information
 - install [Chrome](https://www.google.com/intl/en_us/chrome/)
 - install [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-gb/download/details.aspx?id=48145) (64-bit) version
-- install [Python for Windows](https://www.python.org/downloads/windows/). This itch-batch-downloader version has been tested against version [3.10.7](https://www.python.org/downloads/release/python-3107/) - Windows installer (64-bit). Install with "Install Now", tick "Add Python 3.10 to PATH" and "Disable path length limit"
+- install [Python for Windows](https://www.python.org/downloads/windows/). This itch-batch-downloader version has been tested against version [3.14.3](https://www.python.org/downloads/release/python-3143/) - Windows installer (64-bit). Install with "Install Now", tick "Add Python 3.10 to PATH" and "Disable path length limit"
 - open cmd shell (no need to be Administrator). At the command prompt go to the same directory where you have your itch-batch-downloader.py script and from there execute the following commands:
 ```
 py -m pip install --upgrade pip
