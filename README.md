@@ -1,11 +1,31 @@
 # itch batch downloader
 
-itch batch downloader is a python script that allows you to download all items bound to your itch.io account
+A Python script that downloads all items bound to your itch.io account in batch.
 
-note that you can only download games from itch.io with this which are bound to your account. You cannot pirate games on
-itch.io with that
+The downloader:
+- retrieves every item in your itch.io library
+- downloads all available files
+- optionally captures product pages as PNG and PDF
+- downloads embedded videos
+- preserves historical versions where possible
+- supports interrupting and resuming downloads
 
-the purpose is to have all your purchases organized in directories and downloaded in batch on the first run, ability to interrupt and restart the batch, and re-run it occasionally to capture any difference, new downloads, etc.
+The goal of the tool is to create a complete local archive of your itch.io purchases.
+
+This script only downloads items bound to your account and does not bypass itch.io permissions.
+
+## Features
+
+- batch download of your entire itch.io library
+- resume interrupted downloads
+- skip files that are already identical
+- capture product pages as:
+-- PNG screenshot
+-- PDF print
+- download embedded videos
+- version older metadata captures instead of overwriting
+- sanitize filenames to avoid filesystem issues
+- debug mode for detailed download tracking
 
 ## Requirements
 
