@@ -82,8 +82,8 @@ text file.
 
 Recommended browser extensions:
 
--   **Get cookies.txt LOCALLY** (Chrome / Chromium browsers)
--   **cookies.txt** (Firefox)
+-   [**Get cookies.txt LOCALLY**](https://chromewebstore.google.com/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc) (Chrome / Chromium browsers)
+-   [**cookies.txt**](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/) (Firefox)
 
 Export **only itch.io cookies**.
 
@@ -216,11 +216,40 @@ downloader state.
 
 ## Tips and tricks
 
-- if you would like to associate free games to your account in batch, you could do so by using tools such as [ItchClaim](https://github.com/Smart123s/ItchClaim)
-- for binding your games to your account (itch.io does not do that automatically with bundles) you should install an
-  user script extension (like [Tampermonkey](https://www.tampermonkey.net/) for [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) or for [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)) and a user scripts which can bind games automatically to your account,
-  like "[itch.io bundle to library](https://greasyfork.org/en/scripts/427686-itch-io-bundle-to-library)". It allows you to add all the items in a single page in just one click. This way you can add page by page (very large bundles with 500+ items should be around 30 pages, so you can add all those items in a fraction of the clicks). This script will download all of the items you have under "https://itch.io/my-purchases" and bundles initially are not in there (your library) until items are not added one by one by or using the "itch.io bundle to library" script here above. I more recently found out about this Chrome extension but I cannot guarantee it works [itch.io Bundle Auto Add to Library](https://chromewebstore.google.com/detail/itchio-bundle-auto-add-to/pbolegaohnnpillkpklefebilhanameg). 
-- for exporting cookies, there is the addon "[cookies.txt](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/)" for Firefox or "[Get cookies.txt](https://chromewebstore.google.com/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc)" for Chrome
+- If you would like to associate free games with your account in batch, you can use tools such as [ItchClaim](https://github.com/Smart123s/ItchClaim).
+
+- If you purchased bundles, you may notice that **itch.io does not automatically add all bundle items to your library**. Many items remain only inside the bundle purchase page and do not appear under:
+
+  https://itch.io/my-purchases
+
+  Since the downloader reads items from your library/purchases list, those bundle items need to be added to your account first.
+
+  One convenient way to do this is by using a **user script**.
+
+  First install a user-script extension such as **Tampermonkey**:
+
+  - [Tampermonkey](https://www.tampermonkey.net/)
+  - Chrome version: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en
+  - Firefox version: https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/
+
+  Then install a script that can automatically bind bundle items to your library, such as:
+
+  - **itch.io bundle to library**  
+    https://greasyfork.org/en/scripts/427686-itch-io-bundle-to-library
+
+  This script allows you to add **all the items from a single bundle page with one click**.
+
+  Large bundles (for example 500+ items) may span **many pages (around 30 pages)**, but using the script you can add them page by page with only a fraction of the manual clicks normally required.
+
+  Once items are added to your library, they will appear under:
+
+  https://itch.io/my-purchases
+
+  and the downloader will be able to process them.
+
+- I also recently discovered a Chrome extension that may automate this process as well, although I cannot guarantee that it works:
+
+  https://chromewebstore.google.com/detail/itchio-bundle-auto-add-to/pbolegaohnnpillkpklefebilhanameg
 
 ## Configuration file
 
