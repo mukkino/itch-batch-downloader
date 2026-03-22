@@ -6,7 +6,7 @@ A Python script that downloads all items bound to your itch.io account in batch.
 ## The downloader
 
 - Retrieves items currently bound to your itch.io account/library.
-- Attempts to attempts to download all available files it can access automatically.
+- Attempts to download all available files it can access automatically.
 - Optionally captures product pages as PNG and PDF.
 - Downloads embedded videos.
 - Preserves historical versions where possible.
@@ -35,10 +35,10 @@ This script only downloads items bound to your account and does not bypass itch.
 
 # Requirements
 
-- Python 3.9 or newer
+- [Python](https://www.python.org/downloads/) 3.9 or newer
 - Python packages listed in `requirements.txt`
 - Sufficient disk space for your library
-- Exported itch.io cookies in `cookies.txt` / Netscape-style format
+- Exported itch.io cookies in `cookies-itch.txt` / Netscape-style format
 
 ## Optional (only needed for some features)
 
@@ -46,7 +46,7 @@ This script only downloads items bound to your account and does not bypass itch.
 
 Required for features that use Selenium browser automation.
 
-If Chrome is not installed:
+If [Chrome](https://www.google.com/intl/en_au/chrome/) is not installed:
 
 - Product page PDF snapshots will not be created (`create_pdf`)
 - Product page PNG screenshots will not be created (`create_png`)
@@ -64,9 +64,9 @@ create_png = OFF
 
 ### Microsoft Visual C++ Redistributable
 
-Windows only.
+[Microsoft Visual C++ Redistributable](https://www.microsoft.com/en-gb/download/details.aspx?id=48145)
 
-Install the x64 version if you are using 64-bit Python (most systems).
+Install the x64 version if you are using 64-bit Python (most systems). This is needed on Windows only.
 
 Some Python packages used by the downloader include native compiled components (for example `cryptography`, `cffi`, and other compiled wheels).
 
@@ -88,7 +88,7 @@ The script has primarily been tested on Windows, but most of the code is cross-p
 
 Open:
 
-https://itch.io
+[https://itch.io/[(https://itch.io/)
 
 Log in to your account.
 
@@ -102,10 +102,10 @@ Export the cookies for itch.io from your browser and save them to a text file.
 
 Recommended browser extensions:
 
-- **Get cookies.txt LOCALLY** (Chrome / Chromium browsers)
-- **cookies.txt** (Firefox)
+- [Get cookies.txt LOCALLY](https://chromewebstore.google.com/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc) (Chrome / Chromium browsers)
+- [cookies.txt](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/) (Firefox)
 
-Export **only itch.io cookies**.
+Export **only itch.io cookies**. If you export all of the it will also work but it will be unsafe from a cybersecuroty standpoint.
 
 Save the exported file in the same directory as the script and rename it to:
 
@@ -178,23 +178,13 @@ to safely interrupt the downloader.
 
 # Tips and tricks
 
-If you would like to associate free games with your account in batch, you can use tools such as ItchClaim.
+If you would like to associate free games with your account in batch, you can use tools such as [ItchClaim](https://github.com/Smart123s/ItchClaim).
 
-https://github.com/Smart123s/ItchClaim
+If you purchased bundles, many items may not automatically appear under [My Purchases](https://itch.io/my-purchases)
 
-If you purchased bundles, many items may not automatically appear under:
+You can use [Tampermonkey](https://www.tampermonkey.net/) scripts such as [itch-io-bundle-to-library](https://greasyfork.org/en/scripts/427686-itch-io-bundle-to-library) to add them automatically.
 
-https://itch.io/my-purchases
-
-You can use Tampermonkey scripts such as:
-
-https://greasyfork.org/en/scripts/427686-itch-io-bundle-to-library
-
-to add them automatically.
-
-Chrome extension alternative:
-
-https://chromewebstore.google.com/detail/itchio-bundle-auto-add-to/pbolegaohnnpillkpklefebilhanameg
+Chrome extension alternative might also work but I haven't tested them personally. Example: [itch.io Bundle Auto Add to Library](https://chromewebstore.google.com/detail/itchio-bundle-auto-add-to/pbolegaohnnpillkpklefebilhanameg)
 
 ---
 
