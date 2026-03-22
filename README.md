@@ -38,7 +38,7 @@ This script only downloads items bound to your account and does not bypass itch.
 - [Python](https://www.python.org/downloads/) 3.9 or newer
 - Python packages listed in `requirements.txt`
 - Sufficient disk space for your library
-- Exported itch.io cookies in `cookies-itch.txt` / Netscape-style format
+- Exported itch.io cookies in Netscape cookies.txt format (saved as `cookies-itch.txt`). Note: browser cookies eventually expire. If the downloader suddenly stops seeing your purchases, re-export the cookies from your browser.
 
 ## Optional (only needed for some features)
 
@@ -64,9 +64,7 @@ create_png = OFF
 
 ### Microsoft Visual C++ Redistributable
 
-[Microsoft Visual C++ Redistributable](https://www.microsoft.com/en-gb/download/details.aspx?id=48145)
-
-Install the x64 version if you are using 64-bit Python (most systems). This is needed on Windows only.
+Install the x64 version if you are using 64-bit Python (most systems). This is needed on Windows only and it's available [here](https://www.microsoft.com/en-gb/download/details.aspx?id=48145)
 
 Some Python packages used by the downloader include native compiled components (for example `cryptography`, `cffi`, and other compiled wheels).
 
