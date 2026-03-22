@@ -37,18 +37,96 @@ The script has primarily been tested on Windows, but most of the code is cross-p
 
 ## Usage
 
-- login to itch.io with your web browser
-- export your cookies to a file. You only need the cookies for itch.io
-- copy the cookie file in the same directory and rename it to 'cookies-itch.txt'
-- edit the itch-batch-downloader.ini to set up your download directory and the other options available (see below). If not available run the script for the first time. It won't do anything but create the itch-batch-downloader.ini file
-- run the script with (if unsure about which to use start with the first one):
-```
-python itch-downloader.py
-```
-or
-```
-python3 itch-downloader.py
-```
+### 1. Login to itch.io
+
+Open https://itch.io in your web browser and login to your account.
+
+The script requires your authenticated session cookies in order to
+access your library and download owned content.
+
+------------------------------------------------------------------------
+
+### 2. Export your itch.io cookies
+
+Export the cookies for `itch.io` from your browser and save them to a
+text file.
+
+Recommended browser extensions:
+
+-   **Get cookies.txt LOCALLY** (Chrome / Chromium browsers)
+-   **cookies.txt** (Firefox)
+
+Export **only itch.io cookies**.
+
+Save the exported file in the same directory as the script and rename it
+to:
+
+    cookies-itch.txt
+
+------------------------------------------------------------------------
+
+### 3. Configure the downloader
+
+Edit the configuration file:
+
+    itch-batch-downloader.ini
+
+Set at minimum:
+
+-   the download directory
+-   any optional behaviour flags
+
+If the configuration file does not exist, run the script once and it
+will be created automatically. The first run will exit after generating
+the default configuration.
+
+------------------------------------------------------------------------
+
+### 4. Run the script
+
+From the script directory run:
+
+    python itch-downloader.py
+
+or if your system uses `python3`:
+
+    python3 itch-downloader.py
+
+If unsure, try the first command.
+
+------------------------------------------------------------------------
+
+### What happens when the script runs
+
+Once started the downloader will:
+
+1.  Read your configuration file
+2.  Load the cookies from `cookies-itch.txt`
+3.  Connect to itch.io
+4.  Retrieve your library
+5.  Iterate through each owned product
+6.  Download all available files while attempting to avoid duplicates
+7.  Save the files into your configured download directory
+
+Progress and warnings are printed to the console.
+
+------------------------------------------------------------------------
+
+### Stopping the script
+
+The downloader runs continuously until it finishes processing your
+library.
+
+To stop it manually press:
+
+    CTRL + C
+
+This sends an interrupt signal and safely stops the script.
+
+Any files that were already fully downloaded will remain on disk.
+Incomplete downloads may remain as partial files depending on the
+downloader state.
+
 ### Detailed usage information
 - install [Chrome](https://www.google.com/intl/en_us/chrome/)
 - install [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-gb/download/details.aspx?id=48145) (64-bit) version
