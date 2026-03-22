@@ -20,8 +20,8 @@ This script only downloads items bound to your account and does not bypass itch.
 - resume interrupted downloads
 - skip files that are already identical
 - capture product pages as:
--- PNG screenshot
--- PDF print
+  - PNG screenshot
+  - PDF print
 - download embedded videos
 - version older metadata captures instead of overwriting
 - sanitize filenames to avoid filesystem issues
