@@ -37,9 +37,7 @@ This script only downloads items bound to your account and does not bypass itch.
 
 ### Optional (only needed for some features)
 
-#### [Google Chrome](https://www.google.com/intl/en_us/chrome/)
-
-Required for features that use Selenium browser automation.
+#### [Google Chrome](https://www.google.com/intl/en_us/chrome/): Required for features that use Selenium browser automation.
 
 If Chrome is not installed:
 
