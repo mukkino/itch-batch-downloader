@@ -68,7 +68,7 @@ The script has primarily been tested on Windows, but most of the code is cross-p
 
 ### 1. Login to itch.io
 
-Open https://itch.io in your web browser and login to your account.
+Open https://itch.io in your web browser and log in to your account.
 
 The script requires your authenticated session cookies in order to
 access your library and download owned content.
@@ -106,8 +106,8 @@ Set at minimum:
 -   any optional behaviour flags
 
 If the configuration file does not exist, run the script once and it
-will be created automatically. The first run will exit after generating
-the default configuration.
+will be created automatically.\
+The first run will exit after generating the default configuration.
 
 ------------------------------------------------------------------------
 
@@ -125,7 +125,7 @@ If unsure, try the first command.
 
 ------------------------------------------------------------------------
 
-### What happens when the script runs
+## What happens when the script runs
 
 Once started the downloader will:
 
@@ -139,9 +139,67 @@ Once started the downloader will:
 
 Progress and warnings are printed to the console.
 
+Downloaded files are compared with the online version.\
+If the files are identical, the download will be **skipped**.
+
 ------------------------------------------------------------------------
 
-### Stopping the script
+## Debug mode
+
+You can enable verbose debug output by editing the configuration file
+and setting:
+
+    debug_logs = ON
+
+When debug mode is enabled the script prints additional information to
+the console, including:
+
+-   detailed progress information
+-   the list of downloads discovered
+-   the order in which items will be processed
+-   additional diagnostic information useful for troubleshooting
+
+This can also be used to see the **exact download order** of your
+library.
+
+------------------------------------------------------------------------
+
+## Download progress tracking
+
+While the script is running, a file named:
+
+    itch-batch-downloader-track.txt
+
+will appear in the same directory as your downloads.
+
+This file contains a number representing the **download currently being
+processed**.
+
+This mechanism allows the downloader to resume work if it is
+interrupted.
+
+### Restarting from the beginning
+
+If you want to restart downloads from the beginning:
+
+-   delete the file `itch-batch-downloader-track.txt`
+
+### Restarting from a specific item
+
+If you want to resume from a specific item:
+
+-   open `itch-batch-downloader-track.txt`
+-   change the number to the download index you want to start from
+
+You can determine the correct download number by enabling **debug
+mode**, which prints the full list of downloads and their order.
+
+If the tracking file becomes corrupted or contains an invalid number,
+simply delete it to restart from the beginning.
+
+------------------------------------------------------------------------
+
+## Stopping the script
 
 The downloader runs continuously until it finishes processing your
 library.
@@ -152,19 +210,17 @@ To stop it manually press:
 
 This sends an interrupt signal and safely stops the script.
 
-Any files that were already fully downloaded will remain on disk.
+Any files that were already fully downloaded will remain on disk.\
 Incomplete downloads may remain as partial files depending on the
 downloader state.
 
 ## Tips and tricks
 
-- downloaded files are checked with the online version. if they are identical, they will be skipped
 - if you would like to associate free games to your account in batch, you could do so by using tools such as [ItchClaim](https://github.com/Smart123s/ItchClaim)
 - for binding your games to your account (itch.io does not do that automatically with bundles) you should install an
   user script extension (like [Tampermonkey](https://www.tampermonkey.net/) for [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) or for [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)) and a user scripts which can bind games automatically to your account,
   like "[itch.io bundle to library](https://greasyfork.org/en/scripts/427686-itch-io-bundle-to-library)". It allows you to add all the items in a single page in just one click. This way you can add page by page (very large bundles with 500+ items should be around 30 pages, so you can add all those items in a fraction of the clicks). This script will download all of the items you have under "https://itch.io/my-purchases" and bundles initially are not in there (your library) until items are not added one by one by or using the "itch.io bundle to library" script here above. I more recently found out about this Chrome extension but I cannot guarantee it works [itch.io Bundle Auto Add to Library](https://chromewebstore.google.com/detail/itchio-bundle-auto-add-to/pbolegaohnnpillkpklefebilhanameg). 
 - for exporting cookies, there is the addon "[cookies.txt](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/)" for Firefox or "[Get cookies.txt](https://chromewebstore.google.com/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc)" for Chrome
-- once you start downloading something, you will notice in the same folder as your downloads, a file called itch-batch-downloader-track.txt. This file contains a number and is basically the number of the download currently being processed. If you would like to restart the downloads from the first item, just delete the file or change the number to the download number of the item you are interested in. You can obtain a list of the downloads and their order by activating the debug mode (see below)
 
 ## Configuration file
 
