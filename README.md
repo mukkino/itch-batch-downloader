@@ -16,7 +16,7 @@ the purpose is to have all your purchases organized in directories and downloade
 ## Usage
 
 - login to itch.io with your web browser
-- export your cookies to a file. You only need the cookies for itch.io, you can delete the rest (with a text editor, see below)
+- export your cookies to a file. You only need the cookies for itch.io
 - copy the cookie file in the same directory and rename it to 'cookies-itch.txt'
 - edit the itch-batch-downloader.ini to set up your download directory and the other options available (see below). If not available run the script for the first time. It won't do anything but create the itch-batch-downloader.ini file
 - run the script with (if unsure about which to use start with the first one):
