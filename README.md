@@ -367,9 +367,9 @@ These known limitations may be fixed in the future.
 
 ## Corner cases to keep in mind for testing
 
-- there may be games which cannot be downloaded, because the developers put them on a dropbox or google drive, though this will be written to stdout as a warning that the script is unable to download it. [This](https://nattwentea.itch.io/deadly-revelation) is an example of that. The issue is that we are not talking about just one simple download but an actual export of Google Sheets files to some other format in some cases
-- when taking screenshot/creating PDFs, some adult-only products might show a confirmation pop-up mentioning you agree on seeing those contents. It allows for a checkbox "do not ask again". Suggestion: if you are ok with those contents, open an adult-only page, confirm you do not want to see that warning anymore (remember the choice) and export your cookies again. This way this script will work for all the adult-only products and the exported .png/.pdf will be showing the corresponding page contents rather than the pop-up warning. If you do not have an adult-only link handy showing the pop-up, [here](https://xoshdarkheart.itch.io/midnights-kiss) is one, and [here](https://adira.itch.io/tension) another one
-- download screenshots as single images from the product page (example: https://bootdiskrevolution.itch.io/bleed)
+- There may be games which cannot be downloaded, because the developers put them on a dropbox or google drive, though this will be written to stdout as a warning that the script is unable to download it. [This](https://nattwentea.itch.io/deadly-revelation) is an example of that. The issue is that we are not talking about just one simple download but an actual export of Google Sheets files to some other format in some cases.
+- When taking screenshot/creating PDFs, some adult-only products might show a confirmation pop-up mentioning you agree on seeing those contents. It allows for a checkbox "do not ask again". Suggestion: if you are ok with those contents, open an adult-only page, confirm you do not want to see that warning anymore (remember the choice) and export your cookies again. This way this script will work for all the adult-only products and the exported .png/.pdf will be showing the corresponding page contents rather than the pop-up warning. If you do not have an adult-only link handy showing the pop-up, [here](https://xoshdarkheart.itch.io/midnights-kiss) is one, and [here](https://adira.itch.io/tension) another one.
+- Download screenshots as single images from the product page. Example: [here](https://bootdiskrevolution.itch.io/bleed).
 
 ## How to compile
 
@@ -490,11 +490,11 @@ The program can be built without UPX, so this step is optional.
 
 Download:
 
-https://upx.github.io/
+[https://upx.github.io/](https://upx.github.io/)
 
 Tested version:
 
-https://github.com/upx/upx/releases/tag/v5.1.1
+[v5.1.1](https://github.com/upx/upx/releases/tag/v5.1.1)
 
 Steps:
 
