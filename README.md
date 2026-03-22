@@ -29,9 +29,15 @@ This script only downloads items bound to your account and does not bypass itch.
 
 ## Requirements
 
-- Python 3
-- sufficient disk space for your library
-- exported itch.io cookies in Netscape format
+- Python 3.9 or newer
+- Python packages listed in `requirements.txt`
+- Sufficient disk space for your library
+- Exported itch.io cookies in Netscape format
+
+Optional (only needed for some features):
+
+- [Google Chrome](https://www.google.com/intl/en_us/chrome/) (required if Selenium-based page rendering is enabled)
+- [Microsoft Visual C++ Redistributable](https://www.microsoft.com/en-gb/download/details.aspx?id=48145) (Windows only, usually already installed). Install the **x64 version** if you are using 64-bit Python (most systems).
 
 The script has primarily been tested on Windows, but most of the code is cross-platform and should work on Linux and macOS.
 
@@ -128,8 +134,7 @@ Incomplete downloads may remain as partial files depending on the
 downloader state.
 
 ### Detailed usage information
-- install [Chrome](https://www.google.com/intl/en_us/chrome/)
-- install [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-gb/download/details.aspx?id=48145) (64-bit) version
+
 - install [Python for Windows](https://www.python.org/downloads/windows/). This itch-batch-downloader version has been tested against version [3.14.3](https://www.python.org/downloads/release/python-3143/) - Windows installer (64-bit). Install with "Install Now", tick "Add Python 3.14 to PATH" and "Disable path length limit"
 - open cmd shell (no need to be Administrator). At the command prompt go to the same directory where you have your itch-batch-downloader.py script and from there execute the following commands:
 ```
