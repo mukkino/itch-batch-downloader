@@ -36,8 +36,26 @@ This script only downloads items bound to your account and does not bypass itch.
 
 Optional (only needed for some features):
 
-- [Google Chrome](https://www.google.com/intl/en_us/chrome/) (required if Selenium-based page rendering is enabled)
-- [Microsoft Visual C++ Redistributable](https://www.microsoft.com/en-gb/download/details.aspx?id=48145) (Windows only, usually already installed). Install the **x64 version** if you are using 64-bit Python (most systems).
+- **[Google Chrome](https://www.google.com/intl/en_us/chrome/)**
+
+  Required for features that use Selenium browser automation.
+
+  If Chrome is not installed:
+  - product page **PDF snapshots will not be created** (`create_pdf`)
+  - product page **PNG screenshots will not be created** (`create_png`)
+
+  The rest of the downloader will still work (library scanning and file downloads).
+
+- [Microsoft Visual C++ Redistributable](https://www.microsoft.com/en-gb/download/details.aspx?id=48145) (Windows only). Install the **x64 version** if you are using 64-bit Python (most systems).
+
+  Some Python packages used by the downloader include native compiled components (for example `cryptography`, `cffi`, and other compiled wheels).
+
+  If the runtime is missing on Windows:
+  - the script **may fail to start**
+  - HTTPS connections used for downloading files **may fail**
+  - some dependencies may fail to import
+
+  On most Windows systems this runtime is already installed.
 
 The script has primarily been tested on Windows, but most of the code is cross-platform and should work on Linux and macOS.
 
