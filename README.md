@@ -380,7 +380,10 @@ These known limitations may be fixed in the future
 - todo: chrome driver installer has a downloader that causes problems when printing to file. Override that
 - todo: ability to download screenshots as single images from the product page (example: https://bootdiskrevolution.itch.io/bleed)
 - todo: html page downloader
-- todo: downloads file names will be changed to prevent problems with special characters and duplicate names but special characters are not handled
+- todo: download file names should be sanitized to prevent problems with special characters, unsafe names, and path-related filename collisions
+- todo: detect expired cookies and warn the user
+- todo: make HTML parsing more resilient to itch.io layout changes
+- todo: prevent failures caused by excessively long file paths
 - bug: find out why at the end of execution sometimes the following is displayed: "Press ENTER to exit.^[[?1;0c" (On Microsoft Windows)
 
 ## Corner cases to keep in mind for testing
@@ -643,6 +646,51 @@ Reactivate it later from the project directory.
 ### macOS / Linux
 
     source env/bin/activate
+
+## FAQ
+
+### Why are some bundle items missing from the downloader?
+
+The downloader only processes items that appear in your purchases list:
+
+https://itch.io/my-purchases
+
+If you own a bundle, many items may **not automatically be added to your
+library** by itch.io.\
+Until they are added, they will not appear in your purchases list and
+the downloader will not see them.
+
+To fix this, make sure all bundle items are added to your library first
+(for example using the tools mentioned in the **Tips and tricks**
+section).
+
+Once they appear under:
+
+https://itch.io/my-purchases
+
+the downloader will be able to process them normally.
+
+------------------------------------------------------------------------
+
+### Why do some downloads fail or show warnings?
+
+Some projects on itch.io host their downloadable files on **external
+platforms** such as:
+
+-   Dropbox\
+-   Google Drive\
+-   SoundCloud\
+-   Spotify\
+-   other third‑party hosting services
+
+In these cases the download process may be controlled by the external
+website and cannot always be automated by the downloader.
+
+When this happens the script usually prints a **warning message in the
+console**.
+
+If a file cannot be retrieved automatically, you may need to download it
+manually from the project page.
 
 ## Honourable mention
 
